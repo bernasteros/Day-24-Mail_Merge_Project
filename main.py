@@ -6,9 +6,16 @@
 
 with open("./Input/Letters/starting_letter.txt",mode="r") as file:
     text = file.readlines()
-    print(text)
+    receiver = input("Input Receiver: ")
+    sender = input("Input Sender: ")
 
-# TODO: Replace the [name] placeholder with "Name.txt" and put it into the ./Output/ReadyToSend
+    text[0] = text[0].replace("[name]", receiver)
+    text[-1] = sender
+
+    with open ("./Output/ReadyToSend/Letter_for_"+receiver+".txt", mode="a") as output:
+        for line in text:
+            output.write(line)
+            print(line)
 
 # TODO: Create a letter using starting_letter.txt for each name in invited_names.txt
 
