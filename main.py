@@ -5,17 +5,25 @@
 # Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
 
 with open("./Input/Letters/starting_letter.txt",mode="r") as file:
-    text = file.readlines()
-    receiver = input("Input Receiver: ")
-    sender = input("Input Sender: ")
 
-    text[0] = text[0].replace("[name]", receiver)
-    text[-1] = sender
+    with open("./Input/Names/invited_names.txt") as receiver:
 
-    with open ("./Output/ReadyToSend/Letter_for_"+receiver+".txt", mode="a") as output:
-        for line in text:
-            output.write(line)
-            print(line)
+        name_list = [s.strip() for s in receiver.readlines()]
+        # alternative name_list = list(map(str.strip, receiver.readlines()))
+        sender = input("Input Sender Name: ")
+
+        for name in name_list:
+            print (name)
+            text = file.readlines()
+            print(text)
+            text[0] = text[0].replace("[name]", name)
+            text[-1] = sender
+            print(text)
+
+            with open ("./Output/ReadyToSend/Letter_for_"+name+".txt", mode="a") as output:
+                for line in text:
+                    output.write(line)
+                    print(line)
 
 # TODO: Create a letter using starting_letter.txt for each name in invited_names.txt
 
