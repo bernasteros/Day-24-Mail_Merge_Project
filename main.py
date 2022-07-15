@@ -9,7 +9,7 @@ with open("./Input/Names/invited_names.txt") as receiver:
             text[0] = text[0].replace("[name]", name)
             text[-1] = sender
 
-            with open ("./Output/ReadyToSend/Letter_for_"+name+".txt", mode="a") as output:
-                 for line in text:
+            with open("./Output/ReadyToSend/Letter_for_" + name + ".txt", mode="a") as output:
+                for line in text:
                     output.write(line)
                     print(line)
